@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h2><a href="index">Назад</a></h2>
+<div>Список 5 самых распространенных штрафов</div>
+{{#notempty}}
+    <table border="1px">
+        <tr>
+            <th>Нарушение</th>
+            <th>Количество</th>
+            <th>%</th>
+        </tr>
+        {{#finestats}}
+            <tr>
+                <td>{{key.fineDescription}}</td>
+                <td>{{value.totalFines}}</td>
+                <td>{{value.finePercent}}</td>
+            </tr>
+        {{/finestats}}
+    </table>
+{{/notempty}}
+{{^notempty}}
+    <div>Список пуст</div>
+{{/notempty}}
+</body>
+</html>

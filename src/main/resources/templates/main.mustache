@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h2><a href="finereport">Отчет о штафах</a></h2>
+<div>Поиск по владельцу</div>
+<div>
+    <form method="get" action="filterByDriver">
+        <input type="text" name="secondName" placeholder="Фамилия"/>
+        <input type="text" name="firstName" placeholder="Имя"/>
+        <input type="text" name="middleName" placeholder="Отчество"/>
+        <button type="submit">Найти</button>
+    </form>
+</div>
+<div>Поиск по номеру</div>
+<div>
+    <form method="get" action="filterByCar">
+        <input type="text" name="licensePlate" placeholder="А001АА"/>
+        <button type="submit">Найти</button>
+    </form>
+</div>
+<div></div>
+<div>Список штрафов</div>
+{{#notempty}}
+    <table border="1px">
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Марка авто</th>
+            <th>Модель авто</th>
+            <th>Номер</th>
+            <th>Нарушение</th>
+            <th>Сумма</th>
+        </tr>
+        {{#fines}}
+            <tr>
+                <td>{{car.owner.secondName}}</td>
+                <td>{{car.owner.firstName}}</td>
+                <td>{{car.owner.middleName}}</td>
+                <td>{{car.carBrand}}</td>
+                <td>{{car.carModel}}</td>
+                <td>{{car.licensePlate}}</td>
+                <td>{{fine.fineDescription}}</td>
+                <td>{{fine.fineTax}}</td>
+            </tr>
+        {{/fines}}
+    </table>
+{{/notempty}}
+{{^notempty}}
+    <div>Список пуст</div>
+{{/notempty}}
+</body>
+</html>
